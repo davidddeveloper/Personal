@@ -1,0 +1,64 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <header>
+        <div>
+            <h2>{{blog.title}}</h2>
+            <div class="blog-details">
+                <div class="read-time-date-posted">
+                    <p>{{blog.date_posted}} |</p>
+                    <p>{{blog.read_time}} minutes read</p>
+                </div>
+                <div>
+                    <ul class="tags">
+                        {% for tag in blog.tag.all %}
+                            {{tag.name}}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </header>
+    <main >
+        <div class="text-container">
+            <div class="max-width blog-text">
+                {{blog.text|safe}}
+            </div>
+        </div>
+        <section class="post-comment-and-likes max-width container">
+            <div class="likes-container">
+                <div>
+                    <button id="like-btn" data-action="like" data-blog-id="{{ blog.id }}">👍</button>
+                    <p class="likes">{{ blog.liked_by.count }}</p>
+                </div>
+                <div>
+                    <button id="dislikes-btn" data-action="dislike" data-blog-id="{{ blog.id }}">👎</button>
+                    <p class="dislikes">{{ blog.disliked_by.count }}</p>
+                </div>
+            </div>
+            <form class="post-comment-form" action="" method="post">
+                {% csrf_token %}
+                    <label class=post-comment-container for="comment">
+                        <textarea name="comment" id="make-comment" cols="30" rows="" placeholder="Make some comment..."></textarea>
+                        <button type="submit"><svg xmlns="http://www.w3.org/2000/svg" width="17.455" height="18" viewBox="0 0 17.455 18">
+                            <path id="Path_1" data-name="Path 1" d="M9,0l9,17.455H0Z" transform="translate(17.455) rotate(90)" fill="#A0A0A0"/>
+                          </svg>
+                          
+                        </button>
+                    </label>
+            </form>
+        </section>
+        <section class="max-width comments-container container">
+            <h3>2.3k comments {{request.user.username}}</h3>
+            <div class="comments">
+                {% for comment in blog.comments.all %}
+                <div class="comment">
+                    <h4>@{{comment.user}}</h4>
+                    <p>{{comment.comment}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+{% endblock %}

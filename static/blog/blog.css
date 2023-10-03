@@ -1,0 +1,346 @@
+:root {
+    --bg-color: rgb(250, 250, 250);
+    --text-color: rgb(160, 160, 160);
+    --black: rgb(10, 10, 10);
+    --font-fam: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-xsm: 1.4rem;
+    --font-sm: 1.6rem;
+    --font-md: 1.8rem;
+    --font-lg: 2.5rem;
+    --white: rgb(255, 255, 255);
+    --skyblue: rgb(0, 199, 199);
+    --blue: rgb(7, 7, 232);
+    --form-width: 300px;
+    --form-height: 280px;
+}
+
+html {
+    font-size: 62.5%; /*10px*/
+}
+
+h1, h2, h3, h4, h5 {
+    color: var(--black);
+}
+
+p, .text-select, .blog-text ul {
+    color: var(--text-color);
+    font-size: var(--font-sm)
+}
+
+P::selection, .blog-text li::selection {
+    background-color: var(--skyblue);
+    color: var(--white)
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--font-fam);
+    padding-inline: 10px;
+}
+
+h1 {
+    font-size: var(--font-sm);
+    font-weight: normal;
+}
+
+h1 a, h5 a {
+    text-decoration: none;
+    color: var(--black)
+}
+
+h5 {
+    font-size: var(--font-xsm)
+}
+
+h2 {
+    clear: both;
+    font-size: var(--font-lg);
+    margin-bottom: 0;
+}
+
+h3 {
+    font-size: var(--font-md);
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    font-size: var(--font-xsm);
+    
+}
+
+ul.tags {
+    float: right;
+}
+
+button {
+    background: transparent;
+    border: 0;
+}
+
+header.main {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.blog, .discover-more {
+    max-width: 800px;
+}
+
+.blog-details, .read-time-date-posted {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.read-time-date-posted {
+    justify-content: unset;
+    gap: 5px;
+}
+
+.read-time-date-posted p {
+    font-size: var(--font-xsm);
+}
+
+ul a {
+    text-decoration: none;
+}
+
+ul.tags a {
+    color: var(--blue);
+}
+
+hr {
+    clear: both;
+}
+.text-container{
+    margin-top: -6px;
+    background-color: var(--white);
+}
+
+.blog-text {
+    margin: 0 auto;
+}
+
+.blog-text ul {
+    flex-direction: column;
+}
+
+.blog-text img.blog-image {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.post-comment-and-likes, .discover-more {
+    padding-top: 30px
+}
+
+.likes-container {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.likes-container .likes, .dislikes {
+    margin-top: -5px;
+}
+
+.likes-container div {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.likes-container button {
+    font-size: var(--font-md);
+}
+
+.post-comment-container {
+    border-bottom: 2px solid var(--text-color);
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-comment-container textarea {
+    height: 18px;
+    max-height: 40px;
+    resize: none;
+    border: 0;
+    background-color: transparent;
+}
+
+.post-comment-container button[type="submit"]:hover {
+    transform: scale(1.2, 1.2);
+    transition: all .15s ease-out;
+}
+
+.post-comment-container textarea:focus {
+    outline: 0;
+}
+
+.post-comment-container.visibility {
+    border-color: var(--skyblue);
+}
+
+.comments-container .comment {
+    padding-left: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.comment p {
+    padding-left: 10px;
+    margin-top: -18px;
+    font-size: var(--font-xsm)
+}
+
+.discover-more ul {
+    padding-left: 10px;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.discover-more a:hover {
+    text-decoration: underline;
+}
+
+.text-is-selected, .share-dialog {
+    position: absolute;
+    inset: 0;
+    background: var(--white);
+}
+
+.text-is-selected {
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    padding: 8px;
+    width: 60px;
+    box-shadow: 2px 2px 5px var(--text-color);
+    display: none;
+    gap: 10px;
+}
+
+.share-container {
+    position: relative;
+}
+
+#twitter-share, #instagram-share {
+    display: none;
+    position: absolute;
+}
+
+#instagram-share.show {
+    transform: translate(20px, -20px);
+    transition: transform 2s ease-out;
+}
+
+#twitter-share.show {
+    transform: translate(-15px, -20px);
+    transition: transform 2s ease-out;
+}
+
+.focus-on-form.show {
+    position: fixed;
+    inset: 0;
+    background-color: var(--black);
+    opacity: .7;
+    z-index: 1;
+}
+
+#signup-btn, .link-to-signin {
+    display: none;
+}
+
+.signup-or-login-form {
+    width: var(--form-width);
+    height: var(--form-height);
+    padding: 15px;
+    background-color: var(--white);
+    border-radius: 15px;
+    text-align: center;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    margin-left: calc(var(--form-width)/-2);
+    margin-top: calc(var(--form-height)/-2);
+    display: none;
+}
+
+.signup-or-login-form button.close-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 10px 10px 0 0;
+}
+
+.signup-or-login-form input {
+    border: 0;
+    padding-left: 4px;
+    color: var(--text-color)
+}
+
+.signup-or-login-form label {
+    display: block;
+}
+
+.signup-or-login-form input:first-of-type {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.signup-or-login-form #password_confirmation {
+    display: none;
+}
+
+.signup-or-login-form input:focus {
+    outline: 0;
+    border-bottom: 1px solid var(--skyblue)
+}
+
+.signup-or-login-form button {
+    color: var(--skyblue)
+}
+
+/* 348, 620 910 1220 */
+@media (min-width: 348px) {
+    .container {
+        min-width: 348;
+        margin: 0 auto;
+    }
+
+}
+@media (min-width: 620px) {
+    .container {
+        min-width: 620;
+        margin: 0 auto;
+    }
+
+    .text-container {
+        padding-block: 5px;
+        padding-inline: 40px;
+    }
+
+    .blog-text img.blog-image {
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .max-width {
+        max-width: 500px;
+    }
+
+}
+@media (min-width: 910px) {
+    .container {
+        min-width: 910;
+        margin: 0 auto;
+    }
+
+}
