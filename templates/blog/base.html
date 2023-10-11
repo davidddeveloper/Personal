@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'blog/blog.css' %}">
     <script src="{% static 'blog/blog.js' %}" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.min.css">
 </head>
 <body>
     <header class="main container">
@@ -34,27 +35,32 @@
             </ul>
         </section>
         <div class="text-is-selected" id="popup">
-            <button id="copy-btn"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+            <button id="copy-btn" title="copy"> <i class="fa fa-clipboard" aria-hidden="true"></i></button>
             <div class="share-container">
                 <!-- Twitter Share -->
-                    <a href="#" id="twitter-share"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href="#" id="twitter-share" target="_blank" class=""><i class="ri-twitter-fill"></i></a>
                 <!-- Instagram Share -->
-                    <a href="#" id="instagram-share"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <button id="share-btn"><i class="fa fa-share" aria-hidden="true"></i></button>
+                    <a href="#" id="instagram-share" target="_blank" class=""><i class="ri-instagram-fill"></i></a>
+                <button id="share-btn" title="share"><i class="fa fa-share" aria-hidden="true"></i></button>
             </div>
         </div>
         <!-- Login and Logout section -->
+        {% if request.user.is_authenticated == False %}
         <form class="signup-or-login-form" action="" method="POST">
             {% csrf_token %}
+            <div>{{message}}</div>
             <h5><a href="https://github.com/davidddeveloper">@davidddeveloper</a></h5>
             <label for="username">
-                <input type="text" name="username" id="username" placeholder="username...">
+                <input type="text" name="username" id="username" placeholder="username..." required>
+            </label>
+            <label for="email">
+                <input type="email" name="email" id="email" placeholder="email..." required>
             </label>
             <label for="password">
-                <input type="password" name="password1" id="password" placeholder="password...">
+                <input type="password" name="password1" id="password" minlength="8" maxlength="30" placeholder="password..." required>
             </label>
             <label for="password_confirmation">
-                <input type="password" name="password2" id="password_confirmation" placeholder="retype password...">
+                <input type="password" name="password2" id="password_confirmation" minlength="8" maxlength="30" placeholder="retype password..." required>
             </label>
             <button id="login-btn" type="submit" name="login">Login</button>
             <button id="signup-btn" type="submit" name="signup">Signup</button>
@@ -65,10 +71,16 @@
                 X
             </button>
         </form>
-        
+        {% endif %}
         <!--for changing background when form popup is shown-->
         <section class="focus-on-form">
         </section>
+        <!-- Successful login feedback popup -->
+        {% if request.user.is_authenticated %}
+        <div class="login-success">
+            <p>Welcome {{request.user.username}}</p>
+        </div>
+        {% endif %}
     </main>
 </body>
 </html>
