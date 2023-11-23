@@ -48,8 +48,12 @@ try {
         loginbtn.style.display='none'
         linkToSignin.style.display='inline-block'
         linkToSignup.style.display='none'
+
         confirmPasswordInput.style.display='inline-block'
         emailInput.style.display = 'inline-block'
+
+        confirmPasswordInput.setAttribute('required', '')
+        emailInput.setAttribute('required', '')
     })
 
     linkToSignin.addEventListener('click', () => {
@@ -57,8 +61,12 @@ try {
         loginbtn.style.display='inline-block'
         linkToSignin.style.display='none'
         linkToSignup.style.display='inline-block'
+
         confirmPasswordInput.style.display='none'
         email.style.display = 'none'
+
+        confirmPasswordInput.removeAttribute('required')
+        emailInput.removeAttribute('required')
     })
 
     //Popup form 

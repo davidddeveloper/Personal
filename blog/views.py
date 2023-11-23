@@ -3,6 +3,7 @@ from .models import Blog, Tag, Comment
 from django.contrib.auth import logout, login, get_user, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
+from django.contrib import messages
 from django.http import JsonResponse
 
 
@@ -16,7 +17,7 @@ def home(request):
 # rather it would be called inside of a views that needs it.
 def authenticate_user(request):
     form = UserCreationForm()
-    context = {"hey": "hey"}
+    context = {}
     if request.method == "POST":
         try:
             username = request.POST["username"]
@@ -25,8 +26,11 @@ def authenticate_user(request):
             if user is not None:
                 login(request, user)
                 print(request.POST)
+            else:
+                context = {"message": "Username or password is incorrect"}
+                print(context)
         except:
-            context = {"message": "There's an error! Try Login again"}
+            pass
 
         try:
             if request.POST["signup"] == "":
@@ -36,7 +40,7 @@ def authenticate_user(request):
                     user = authenticate(request, username=username, password=password)
                     login(request, user)
         except:
-            context = {"message": "There's an error! Try Siginup"}
+            pass
     return context
 
 
