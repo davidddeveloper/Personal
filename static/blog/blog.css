@@ -1,5 +1,5 @@
 :root {
-    --bg-color: rgb(250, 250, 250);
+    --bg-color: rgb(245, 245, 245);
     --text-color: rgb(160, 160, 160);
     --black: rgb(10, 10, 10);
     --font-fam: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -15,7 +15,7 @@
 }
 
 html {
-    font-size: 62.5%; /*10px*/
+    font-size: 84.5%; /*10px*/
 }
 
 h1, h2, h3, h4, h5 {
@@ -137,6 +137,8 @@ hr {
     width: 100%;
 }
 
+/* ------------------------ liking comments --------------------- */
+
 .post-comment-and-likes, .discover-more {
     padding-top: 30px
 }
@@ -161,6 +163,9 @@ hr {
     font-size: var(--font-md);
 }
 
+/* Liking comments end here */
+
+/* --------------------- Posting comments styles ------------------ */
 .post-comment-container {
     border-bottom: 2px solid var(--text-color);
     display: flex;
@@ -168,8 +173,7 @@ hr {
 }
 
 .post-comment-container textarea {
-    height: 18px;
-    max-height: 40px;
+    height: 10px;
     resize: none;
     border: 0;
     background-color: transparent;
@@ -195,12 +199,18 @@ hr {
     gap: 10px;
 }
 
+/* Posting comments styles ends here */
+
+/* ------------------------------ Viewing comments -------------------------- */
 .comment p {
     padding-left: 10px;
     margin-top: -18px;
     font-size: var(--font-xsm)
 }
 
+/* Ends here */
+
+/* Links to other blogs */
 .discover-more ul {
     padding-left: 10px;
     flex-direction: column;
@@ -260,6 +270,8 @@ hr {
     z-index: 1;
 }
 
+/* ------------ text-selection styles Ends here -----------------*/
+
 .focus-on-form.show {
     position: fixed;
     inset: 0;
@@ -268,13 +280,14 @@ hr {
     z-index: 1;
 }
 
+/* ------------------------ Signup and Login form styles ---------------*/
+
 #signup-btn, .link-to-signin {
     display: none;
 }
 
 .signup-or-login-form {
     width: var(--form-width);
-    height: var(--form-height);
     padding: 5px 15px;
     background-color: var(--white);
     border-radius: 15px;
@@ -286,6 +299,11 @@ hr {
     margin-left: calc(var(--form-width)/-2);
     margin-top: calc(var(--form-height)/-2);
     display: none;
+}
+
+/* This is such that if an unauthenticated user tries to login or signup */
+.signup-or-login-form.show {
+    display: block;
 }
 
 .signup-or-login-form button.close-btn {
@@ -336,7 +354,7 @@ hr {
     display: flex;
     justify-content: center;
     align-items: center;
-    animation: showIn 1s ease-out;
+    animation: showIn 5s ease-out;
     animation-fill-mode: forwards;
 }
 
